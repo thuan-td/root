@@ -42,6 +42,7 @@ const config: Config = {
         accent: {
           DEFAULT: 'hsl(var(--accent))',
           foreground: 'hsl(var(--accent-foreground))',
+          dark: 'hsl(var(--accent-dark))',
         },
         popover: {
           DEFAULT: 'hsl(var(--popover))',
@@ -51,6 +52,10 @@ const config: Config = {
           DEFAULT: 'hsl(var(--card))',
           foreground: 'hsl(var(--card-foreground))',
         },
+        'surface-light': '#FFFFFF',
+        'surface-dark': '#1F2937',
+        'promo-green-bg': '#E8F5E9',
+        'promo-green-text': '#2E7D32',
       },
       borderRadius: {
         lg: 'var(--radius)',

@@ -16,8 +16,9 @@
     --secondary-foreground: 222.2 47.4% 11.2%;
     --muted: 48 9% 97%; /* Beige #F9F9F4 */
     --muted-foreground: 215.4 16.3% 46.9%;
-    --accent: 54 100% 59%; /* Yellow #FFEB3B */
+    --accent: 168 100% 94%; /* Light Teal #E0F2F1 */
     --accent-foreground: 222.2 47.4% 11.2%;
+    --accent-dark: 174 100% 18%; /* Darker Teal #00695C */
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
     --border: 214.3 31.8% 91.4%;
@@ -41,6 +42,7 @@
     --muted-foreground: 215 20.2% 65.1%;
     --accent: 217.2 32.6% 17.5%;
     --accent-foreground: 210 40% 98%;
+    --accent-dark: 174 60% 50%; /* Teal for dark mode */
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 210 40% 98%;
     --border: 217.2 32.6% 17.5%;
