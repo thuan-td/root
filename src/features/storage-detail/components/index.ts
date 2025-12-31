@@ -12,6 +12,7 @@ export { FacilityGrid } from './facility-grid';
 export { UnitCard } from './unit-card';
 export { UnitCategorySection } from './unit-category-section';
 export { NearbyStoreCard } from './nearby-store-card';
+export { NearbyStoreLink } from './nearby-store-link';
 
 // Section components
 export { StorageHeroSection } from './storage-hero-section';
@@ -21,4 +22,3 @@ export { FloorPlanSection } from './floor-plan-section';
 export { ContractFlowSection } from './contract-flow-section';
 export { NearbyStoresSection } from './nearby-stores-section';
 export { RelatedAreasSection } from './related-areas-section';
-export { ContactCTASection } from './contact-cta-section';

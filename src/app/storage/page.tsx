@@ -4,7 +4,7 @@
  */
 
 import type { Metadata } from 'next';
-import { SearchSection, ContactCTASection } from '@/features/home/components';
+import { ContactCTASection } from '@/features/home/components';
 import {
   Breadcrumb,
   StorageHero,
@@ -14,6 +14,7 @@ import {
   StorageItemsServerWrapper,
   WhyChooseServerWrapper,
   ReviewsServerWrapper,
+  SearchSection,
   FAQServerWrapper,
 } from '@/features/storage/components';
 import { storagePageData } from '@/features/storage/data/storage.data';

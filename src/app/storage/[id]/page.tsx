@@ -17,10 +17,10 @@ import {
   ContractFlowSection,
   NearbyStoresSection,
   RelatedAreasSection,
-  ContactCTASection,
 } from '@/features/storage-detail/components';
 import { STORAGE_DETAIL_PAGE_DATA } from '@/features/storage-detail/data/dummy';
 import { BreadcrumbItem } from '@/features/storage-detail/types';
+import { ContactCTASection } from '@/components/templates/contact-cta-section';
 
 interface PageProps {
   params: {

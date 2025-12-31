@@ -1,24 +1,91 @@
 'use client';
 
 import Link from 'next/link';
-import { Menu, User, Mail, Phone } from 'lucide-react';
+import { Menu, User, Mail, Phone, ChevronDown } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useState } from 'react';
+import { usePathname } from 'next/navigation';
 
 import { LogoImage } from '@/components/images';
+import { StoreSearchDropdown } from './StoreSearchDropdown';
+import { ServicesDropdown } from './ServicesDropdown';
+import { GuideDropdown } from './GuideDropdown';
+
+// Icons
+import {
+  BuildingIcon,
+  LocationIcon,
+  GroupMapIcon,
+  TrainIcon,
+} from '@/components/icons';
 
 const LINK_URLS = [
-  { href: '/', label: '店舗を探す' },
-  { href: '/', label: 'サービス' },
-  { href: '/storage', label: 'ルートとは' },
-  { href: '/', label: '活用事例' },
-  { href: '/contract-flow', label: 'ご契約の流れ' },
-  { href: '/guide', label: 'ご利用ガイド' },
-  { href: '/news', label: 'お知らせ' },
+  {
+    href: '',
+    label: '店舗を探す',
+    hasDropdown: true,
+    dropdownKey: 'store' as const,
+    subMenu: [
+      {
+        href: '/store-search',
+        label: '店舗を探す',
+        icon: <BuildingIcon className="w-8 h-8" />,
+      },
+      {
+        href: '/current-location',
+        label: '現在地から探す',
+        icon: <LocationIcon className="w-8 h-8" />,
+      },
+      {
+        href: '/station-search',
+        label: 'エリアから探す',
+        icon: <GroupMapIcon className="w-8 h-8" />,
+      },
+      {
+        href: '/current-location',
+        label: '路線・駅から探す',
+        icon: <TrainIcon className="w-8 h-8" />,
+      },
+    ],
+  },
+  {
+    href: '',
+    label: 'サービス',
+    hasDropdown: true,
+    dropdownKey: 'services' as const,
+    subMenu: [
+      { href: '/store-search', label: '店舗を探す', icon: '' },
+      { href: '/area-map', label: 'エリアマップから探す', icon: '' },
+      { href: '/station-search', label: '路線・駅から探す', icon: '' },
+      { href: '/current-location', label: '現在地から探す', icon: '' },
+    ],
+  },
+  { href: '/storage', label: 'ルートとは', hasDropdown: false },
+  { href: '/use-cases', label: '活用事例', hasDropdown: false },
+  { href: '/contract-flow', label: 'ご契約の流れ', hasDropdown: false },
+  {
+    href: '/guide',
+    label: 'ご利用ガイド',
+    hasDropdown: true,
+    dropdownKey: 'guide' as const,
+  },
+  { href: '/news', label: 'お知らせ', hasDropdown: false },
 ];
+
+type DropdownType = 'store' | 'services' | 'guide' | null;
 
 export function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [activeDropdown, setActiveDropdown] = useState<DropdownType>(null);
+  const pathname = usePathname();
+
+  const handleDropdownToggle = (dropdownKey: DropdownType) => {
+    setActiveDropdown(activeDropdown === dropdownKey ? null : dropdownKey);
+  };
+
+  const closeDropdown = () => {
+    setActiveDropdown(null);
+  };
 
   return (
     <header className="sticky top-0 z-50 bg-background/95 backdrop-blur shadow-sm border-b">
@@ -50,13 +117,39 @@ export function Header() {
             {/* Bottom Row - Main Nav */}
             <nav className="flex space-x-6 text-sm font-bold">
               {LINK_URLS.map(link => (
-                <Link
-                  key={link.href}
-                  href={link.href}
-                  className="hover:text-primary transition-colors"
-                >
-                  {link.label}
-                </Link>
+                <div key={link.href} className="relative">
+                  {link.hasDropdown ? (
+                    <button
+                      onClick={() =>
+                        handleDropdownToggle(link.dropdownKey as DropdownType)
+                      }
+                      className={`hover:text-primary transition-colors flex items-center gap-1 ${
+                        pathname === link.href ||
+                        activeDropdown === link.dropdownKey
+                          ? 'text-primary'
+                          : ''
+                      }`}
+                    >
+                      {link.label}
+                      <ChevronDown
+                        className={`w-4 h-4 transition-transform ${
+                          activeDropdown === link.dropdownKey
+                            ? 'rotate-180'
+                            : ''
+                        }`}
+                      />
+                    </button>
+                  ) : (
+                    <Link
+                      href={link.href}
+                      className={`hover:text-primary transition-colors ${
+                        pathname === link.href ? 'text-primary' : ''
+                      }`}
+                    >
+                      {link.label}
+                    </Link>
+                  )}
+                </div>
               ))}
             </nav>
           </div>
@@ -84,14 +177,14 @@ export function Header() {
         {isMenuOpen && (
           <div className="md:hidden py-4 border-t">
             <nav className="flex flex-col space-y-3">
-              <Link href="/stores" className="hover:text-primary py-2">
+              <Link href="/store-search" className="hover:text-primary py-2">
                 店舗を探す
               </Link>
               <Link href="/services" className="hover:text-primary py-2">
                 サービス
               </Link>
-              <Link href="/about" className="hover:text-primary py-2">
-                ROOTについて
+              <Link href="/storage" className="hover:text-primary py-2">
+                ルートとは
               </Link>
               <Link href="/use-cases" className="hover:text-primary py-2">
                 活用事例
@@ -114,6 +207,23 @@ export function Header() {
             </nav>
           </div>
         )}
+      </div>
+
+      {/* Dropdowns */}
+      <div className="relative">
+        <StoreSearchDropdown
+          isOpen={activeDropdown === 'store'}
+          subMenu={LINK_URLS[0].subMenu!}
+          onClose={closeDropdown}
+        />
+        <ServicesDropdown
+          isOpen={activeDropdown === 'services'}
+          onClose={closeDropdown}
+        />
+        <GuideDropdown
+          isOpen={activeDropdown === 'guide'}
+          onClose={closeDropdown}
+        />
       </div>
     </header>
   );

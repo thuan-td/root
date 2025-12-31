@@ -7,7 +7,7 @@
 export { HeroSection } from './hero-section';
 export { SearchSection } from './search-section';
 export { UsageBannerSection } from './usage-banner-section';
-export { ContactCTASection } from './contact-cta-section';
+export { ContactCTASection } from '@/components/templates/contact-cta-section';
 
 // Server Components with async API fetching
 export { FeaturedStoresWrapper } from './featured-stores-wrapper';

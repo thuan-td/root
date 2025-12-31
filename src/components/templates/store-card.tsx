@@ -3,6 +3,7 @@ import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 
 interface StoreCardProps {
+  id: string;
   title: string;
   address: string;
   station: string;

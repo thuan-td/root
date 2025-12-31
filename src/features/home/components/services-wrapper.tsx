@@ -1,5 +1,6 @@
 import { ServicesCard } from '@/components/templates/service-card';
 import { getServices } from '../services/homeService';
+import { CardLink } from '../../../components/common/card-link';
 
 // Server Component - Pre-rendered for SEO with async data fetching
 export async function ServicesWrapper() {
@@ -14,7 +15,9 @@ export async function ServicesWrapper() {
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {services.map(service => (
-            <ServicesCard key={service.id} {...service} />
+            <CardLink key={service.id} id={service.id} url="/services">
+              <ServicesCard key={service.id} {...service} />
+            </CardLink>
           ))}
         </div>
       </div>

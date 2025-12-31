@@ -2,11 +2,13 @@
  * Nearby Store Card Component
  *
  * Reusable card component for displaying nearby stores
+ * Server Component with Client Component wrapper for navigation
  */
 
 import Image from 'next/image';
 import { Badge } from '@/components/ui/badge';
 import { NearbyStore } from '../types';
+import { NearbyStoreLink } from './nearby-store-link';
 
 interface NearbyStoreCardProps {
   store: NearbyStore;
@@ -34,7 +36,10 @@ export function NearbyStoreCard({ store }: NearbyStoreCardProps) {
   };
 
   return (
-    <div className="bg-white dark:bg-surface-dark border border-gray-200 dark:border-gray-700 rounded-lg p-4 flex flex-col md:flex-row gap-4 shadow-sm hover:shadow-md transition">
+    <NearbyStoreLink
+      storeId={store.id}
+      className="bg-white dark:bg-surface-dark border border-gray-200 dark:border-gray-700 rounded-lg p-4 flex flex-col md:flex-row gap-4 shadow-sm hover:shadow-md transition"
+    >
       {/* Image */}
       <div className="relative w-full md:w-48 shrink-0">
         <Image
@@ -110,6 +115,6 @@ export function NearbyStoreCard({ store }: NearbyStoreCardProps) {
           </div>
         </div>
       </div>
-    </div>
+    </NearbyStoreLink>
   );
 }

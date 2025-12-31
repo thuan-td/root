@@ -1,5 +1,6 @@
 import { StoreCard } from '@/components/templates/store-card';
 import { getFeaturedStores } from '../services/homeService';
+import { CardLink } from '../../../components/common/card-link';
 
 // Server Component - Pre-rendered for SEO with async data fetching
 export async function FeaturedStoresWrapper() {
@@ -18,7 +19,9 @@ export async function FeaturedStoresWrapper() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {stores.map(store => (
-            <StoreCard key={store.id} {...store} />
+            <CardLink key={store.id} id={store.id} url="/storage">
+              <StoreCard key={store.id} {...store} />
+            </CardLink>
           ))}
         </div>
       </div>

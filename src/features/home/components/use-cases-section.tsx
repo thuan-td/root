@@ -4,6 +4,7 @@ import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 import { ArrowRight } from 'lucide-react';
 import { useUseCases } from '../hooks';
+import { CardLink } from '@/components/common/card-link';
 
 export function UseCasesSection() {
   const { data: useCases, isLoading } = useUseCases();
@@ -37,23 +38,29 @@ export function UseCasesSection() {
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {useCases?.map(useCase => (
-            <div key={useCase.id}>
-              <div className="relative h-48 w-full rounded-lg overflow-hidden mb-4">
-                <Image
-                  src={useCase.imageUrl}
-                  alt={`${useCase.category} - ${useCase.title}`}
-                  fill
-                  className="object-cover"
-                  loading="lazy"
-                  sizes="(max-width: 768px) 100vw, 33vw"
-                />
+            <CardLink
+              key={useCase.id}
+              id={'improve-quality-of-life'}
+              url="/use-cases"
+            >
+              <div key={useCase.id}>
+                <div className="relative h-48 w-full rounded-lg overflow-hidden mb-4">
+                  <Image
+                    src={useCase.imageUrl}
+                    alt={`${useCase.category} - ${useCase.title}`}
+                    fill
+                    className="object-cover"
+                    loading="lazy"
+                    sizes="(max-width: 768px) 100vw, 33vw"
+                  />
+                </div>
+                <h4 className="font-black text-xs uppercase mb-1">
+                  {useCase.category}
+                </h4>
+                <h3 className="font-bold text-sm mb-2">{useCase.title}</h3>
+                <p className="text-xs text-gray-400">{useCase.tags}</p>
               </div>
-              <h4 className="font-black text-xs uppercase mb-1">
-                {useCase.category}
-              </h4>
-              <h3 className="font-bold text-sm mb-2">{useCase.title}</h3>
-              <p className="text-xs text-gray-400">{useCase.tags}</p>
-            </div>
+            </CardLink>
           ))}
         </div>
 

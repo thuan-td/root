@@ -1,4 +1,5 @@
 import { NewsCard } from '@/components/templates/news-card';
+import { CardLink } from '@/components/common/card-link';
 import { Button } from '@/components/ui/button';
 import { ArrowRight } from 'lucide-react';
 import { getNewsItems } from '../services/homeService';
@@ -16,7 +17,14 @@ export async function NewsWrapper() {
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-10">
           {newsItems.map(item => (
-            <NewsCard key={item.id} {...item} />
+            <CardLink
+              key={item.id}
+              id={'nishi-tsuruma-storage-opening'}
+              url="/news"
+              className="text-center"
+            >
+              <NewsCard {...item} />
+            </CardLink>
           ))}
         </div>
 

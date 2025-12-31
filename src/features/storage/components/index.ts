@@ -43,3 +43,4 @@ export { ReviewsWrapper } from './ReviewsWrapper';
 export { UsageExamplesWrapper } from './UsageExamplesWrapper';
 export { StorageItemsWrapper } from './StorageItemsWrapper';
 export { WhyChooseWrapper } from './WhyChooseWrapper';
+export { SearchSection } from './SearchSection';

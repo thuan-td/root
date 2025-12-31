@@ -4,6 +4,7 @@ import { QueryProvider } from '@/lib/query/QueryProvider';
 import { Header } from '@/components/layouts/header';
 import { Footer } from '@/components/layouts/Footer';
 import '@/styles/globals.css';
+import 'leaflet/dist/leaflet.css';
 
 const notoSansJP = Noto_Sans_JP({
   subsets: ['latin'],
