@@ -9,7 +9,7 @@ import {
   ColumnSection,
   FAQWrapper,
   ContactCTASection,
-} from '@/features/home/components';
+} from '@/features/public/home/components';
 import type { Metadata } from 'next';
 import Script from 'next/script';
 
