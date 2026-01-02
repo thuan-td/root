@@ -37,7 +37,7 @@ const LINK_URLS = [
         icon: <LocationIcon className="w-8 h-8" />,
       },
       {
-        href: '/station-search',
+        href: '/area-search',
         label: 'エリアから探す',
         icon: <GroupMapIcon className="w-8 h-8" />,
       },
