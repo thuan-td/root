@@ -52,6 +52,12 @@ export default function RootLayout({
 }) {
   return (
     <html lang="ja" className={notoSansJP.variable}>
+      <head>
+        <link
+          rel="stylesheet"
+          href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined"
+        />
+      </head>
       <body className="font-sans">
         <QueryProvider>
           <div className="flex flex-col min-h-screen">

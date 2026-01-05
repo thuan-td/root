@@ -56,14 +56,23 @@ const config: Config = {
         'surface-dark': '#1F2937',
         'promo-green-bg': '#E8F5E9',
         'promo-green-text': '#2E7D32',
+        'background-light': '#FDFBF7',
+        'background-dark': '#121212',
+        'sidebar-light': '#F5F0E6',
+        'sidebar-dark': '#181818',
+        'primary-light': '#FFEBEE',
       },
       borderRadius: {
         lg: 'var(--radius)',
         md: 'calc(var(--radius) - 2px)',
         sm: 'calc(var(--radius) - 4px)',
       },
+      boxShadow: {
+        soft: '0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03)',
+      },
       fontFamily: {
         sans: ['Noto Sans JP', 'sans-serif'],
+        body: ['Noto Sans JP', 'sans-serif'],
       },
       keyframes: {
         'accordion-down': {
