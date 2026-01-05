@@ -6,6 +6,8 @@ export interface FeaturedStore {
   price: number;
   imageUrl: string;
   category: 'STORAGE' | 'GARAGE' | 'PARKING';
+  color: string;
+  lineText: string;
   available: boolean;
 }
 

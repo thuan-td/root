@@ -15,6 +15,7 @@ export const ROUTES = {
   STORAGE_DETAIL: (id: string) => `/storage/${id}`,
   STORE_SEARCH: '/store-search',
   AREA_SEARCH: '/area-search',
+  STATION_SEARCH: '/station-search',
   CURRENT_LOCATION: '/current-location',
 
   // Service routes

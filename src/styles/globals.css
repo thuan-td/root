@@ -12,10 +12,12 @@
     --popover-foreground: 222.2 84% 4.9%;
     --primary: 0 78% 44%; /* Deep Red #C72424 */
     --primary-foreground: 210 40% 98%;
-    --secondary: 174 44% 59%; /* Teal #4DB6AC */
+    --secondary: 201 79% 43%; /* Blue */
     --secondary-foreground: 222.2 47.4% 11.2%;
-    --muted: 48 9% 97%; /* Beige #F9F9F4 */
-    --muted-foreground: 215.4 16.3% 46.9%;
+    --thirdary: 28 100% 40%; /* Orange */
+    --thirdary-foreground: 222.2 47.4% 11.2%;
+    --muted: 28 100% 40%; /* Orange */
+    --muted-foreground: 222.2 47.4% 11.2%;
     --accent: 168 100% 94%; /* Light Teal #E0F2F1 */
     --accent-foreground: 222.2 47.4% 11.2%;
     --accent-dark: 174 100% 18%; /* Darker Teal #00695C */
@@ -38,8 +40,10 @@
     --primary-foreground: 222.2 47.4% 11.2%;
     --secondary: 217.2 32.6% 17.5%;
     --secondary-foreground: 210 40% 98%;
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
+    --thirdary: 28 100% 40%; /* Orange */
+    --thirdary-foreground: 222.2 47.4% 11.2%;
+    --muted: 28 100% 40%; /* Orange */
+    --muted-foreground: 222.2 47.4% 11.2%;
     --accent: 217.2 32.6% 17.5%;
     --accent-foreground: 210 40% 98%;
     --accent-dark: 174 60% 50%; /* Teal for dark mode */
@@ -60,6 +64,26 @@
   }
   html {
     @apply scroll-smooth;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  @keyframes scroll-vertical {
+    0% {
+      transform: translateY(-50%);
+    }
+    100% {
+      transform: translateY(0%);
+    }
+  }
+  .animate-scroll-vertical {
+    animation: scroll-vertical 20s linear infinite;
+  }
+  .animate-scroll-vertical:hover {
+    animation-play-state: paused;
+  }
+
+  .cubic-bezier {
+    transition-timing-function: cubic-bezier(0.45, 0, 0.55, 1);
   }
 }
 

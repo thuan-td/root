@@ -1,86 +1,60 @@
-import Image from 'next/image';
+import { Banner1, Banner2, Banner3, Banner } from '@/components/images';
+import { AutoScrollingColumn } from '@/components/templates/auto-scrolling-column';
 
 export function HeroSection() {
   return (
-    <section
-      className="relative pt-12 pb-24 overflow-hidden"
-      aria-label="メインコンテンツ"
-    >
-      <div className="container relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          {/* Left Column - Text Content */}
-          <div className="space-y-6 relative">
-            <h1
-              className="text-4xl md:text-5xl lg:text-6xl font-black leading-tight"
-              itemProp="name"
-            >
-              <span className="text-primary">首都圏室内型</span>
-              <br />
-              <span className="text-primary">トランクルーム</span>
-            </h1>
+    <section className="relative overflow-hidden" aria-label="メインコンテンツ">
+      <div className="container mx-auto px-4">
+        <div className="flex flex-col lg:flex-row gap-4 h-[30rem]">
+          {/* Left: Text Content & Small Images */}
+          <div className="flex-1 space-y-8 self-end">
+            <div className="relative inline-block">
+              <h1 className="text-4xl md:text-6xl font-black tracking-tighter leading-tight">
+                <span className="block mb-3">
+                  <span className="text-primary">首</span>都圏室内型
+                </span>
+                <span className="text-black">
+                  <span className="text-primary">ト</span>ランクルーム
+                </span>
+              </h1>
 
-            {/* Yellow Badge */}
-            <div className="absolute -top-10 right-0 md:right-20 w-32 h-32 md:w-40 md:h-40 bg-[#FFEB3B] rounded-full flex flex-col items-center justify-center text-center shadow-lg transform rotate-12 z-20">
-              <span className="text-xs font-bold text-gray-800">
-                拠点数
-                <br />
-                トップクラス
-              </span>
-              <span className="text-2xl md:text-3xl font-black text-primary">
-                ~350
-              </span>
-              <span className="text-xs font-bold text-gray-800">
-                拠点
-                <br />
-                突破
-              </span>
+              {/* Floating Yellow Badge */}
+              <div className="absolute -top-4 -right-60 md:-right-64 bg-[#FFF100] text-sm lg:text-base rounded-full w-32 h-32 md:w-40 md:h-40 flex flex-col items-center justify-center text-center shadow-lg transform rotate-0 z-10">
+                <span className="font-bold">拠点数</span>
+                <span className="font-bold">トップクラス</span>
+                <div className="flex items-baseline gap-0.5">
+                  <span className="font-bold">約</span>
+                  <span className="text-2xl md:text-3xl font-black text-primary">
+                    350
+                  </span>
+                  <span className="font-bold">拠点</span>
+                </div>
+                <span className="font-bold bg-black text-white px-2 rounded-full">
+                  突破
+                </span>
+              </div>
             </div>
 
-            <p className="text-muted-foreground text-lg md:pr-20">
-              安心・安全な収納スペース
-              <br />
-              24時間365日、自由に出入り
-              <br />
-              あなたの生活にプラスを
-            </p>
+            {/* Sub Gallery (Bottom row of banner) */}
+            <div className="grid grid-cols-3 gap-3 md:gap-4 mt-12 max-w-2xl">
+              {[Banner1, Banner2, Banner3].map((BannerComponent, idx) => (
+                <div key={idx} className="rounded-2xl overflow-hidden">
+                  <BannerComponent width={400} />
+                </div>
+              ))}
+            </div>
           </div>
 
-          {/* Right Column - Images */}
-          <div className="relative h-[400px]">
-            {/* Main Large Image */}
-            <div className="absolute top-0 right-0 w-3/4 h-3/4 rounded-2xl overflow-hidden shadow-2xl">
-              <Image
-                src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&h=600&fit=crop"
-                alt="首都圏室内型トランクルーム外観 - 24時間365日利用可能な安全な収納スペース"
-                fill
-                className="object-cover"
-                priority
-                sizes="(max-width: 768px) 100vw, 50vw"
-              />
+          {/* Right: Main Image & Scrolling Column */}
+          <div className="flex flex-row gap-4">
+            {/* Center Main Image */}
+            <div className="flex-[2] rounded-3xl overflow-hidden self-end">
+              <Banner width={600} />
             </div>
 
-            {/* Bottom Left Image */}
-            <div className="absolute bottom-0 left-0 w-1/2 h-1/2 rounded-2xl overflow-hidden shadow-xl border-4 border-background">
-              <Image
-                src="https://images.unsplash.com/photo-1595428774223-ef52624120d2?w=400&h=400&fit=crop"
-                alt="清潔で広々としたトランクルーム内部 - セキュリティ完備"
-                fill
-                className="object-cover"
-                loading="lazy"
-                sizes="(max-width: 768px) 50vw, 25vw"
-              />
-            </div>
-
-            {/* Top Left Small Image */}
-            <div className="absolute top-10 left-10 w-1/3 h-1/3 rounded-2xl overflow-hidden shadow-lg border-4 border-background z-10 hidden md:block">
-              <Image
-                src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=300&h=300&fit=crop"
-                alt="ROOTストレージをご利用いただいているお客様"
-                fill
-                className="object-cover"
-                loading="lazy"
-                sizes="20vw"
-              />
+            {/* Auto Scrolling Column */}
+            <div className="flex-1 relative overflow-hidden rounded-3xl">
+              <AutoScrollingColumn />
             </div>
           </div>
         </div>

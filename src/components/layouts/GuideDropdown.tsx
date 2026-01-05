@@ -5,45 +5,20 @@
 
 'use client';
 
-import { FileText, HelpCircle, ClipboardCheck, CreditCard } from 'lucide-react';
+import Link from 'next/link';
+import { ArrowRightRounded } from '../icons';
 
 interface GuideDropdownProps {
   isOpen: boolean;
   onClose: () => void;
+  subMenu: { href: string; label: string }[];
 }
 
-const guideItems = [
-  {
-    id: 'usage',
-    icon: <FileText className="w-6 h-6" />,
-    title: 'ご利用ガイド',
-    description: 'トランクルームの使い方について',
-    link: '/guide/usage',
-  },
-  {
-    id: 'contract',
-    icon: <ClipboardCheck className="w-6 h-6" />,
-    title: 'ご契約の流れ',
-    description: '申し込みから契約完了まで',
-    link: '/contract-flow',
-  },
-  {
-    id: 'payment',
-    icon: <CreditCard className="w-6 h-6" />,
-    title: 'お支払い方法',
-    description: '利用可能なお支払い方法',
-    link: '/guide/payment',
-  },
-  {
-    id: 'faq',
-    icon: <HelpCircle className="w-6 h-6" />,
-    title: 'よくあるご質問',
-    description: 'お客様からよくいただく質問',
-    link: '/faq',
-  },
-];
-
-export function GuideDropdown({ isOpen, onClose }: GuideDropdownProps) {
+export function GuideDropdown({
+  isOpen,
+  onClose,
+  subMenu,
+}: GuideDropdownProps) {
   if (!isOpen) return null;
 
   return (
@@ -79,26 +54,28 @@ export function GuideDropdown({ isOpen, onClose }: GuideDropdownProps) {
         </button>
 
         <div className="container py-8">
-          <h2 className="text-2xl font-bold mb-8 text-center">ご利用ガイド</h2>
+          {/* <h2 className="text-2xl font-bold mb-8 text-center">ご利用ガイド</h2> */}
 
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-5xl mx-auto">
-            {guideItems.map(item => (
-              <a
-                key={item.id}
-                href={item.link}
-                className="group cursor-pointer hover:shadow-lg transition-all rounded-lg p-6 bg-white border hover:border-primary"
+          <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
+            {subMenu.map(item => (
+              <Link
+                key={item.href}
+                href={item.href}
+                className="group cursor-pointer transition-all rounded-lg py-10 bg-white"
                 onClick={onClose}
               >
-                <div className="flex flex-col items-center text-center gap-3">
-                  <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-colors">
-                    {item.icon}
-                  </div>
-                  <h3 className="font-bold text-sm">{item.title}</h3>
-                  <p className="text-xs text-gray-600 line-clamp-2">
-                    {item.description}
+                <div className="flex flex-col items-center text-center gap-2">
+                  <p className="flex items-center text-sm font-bold text-black group-hover:text-primary">
+                    <ArrowRightRounded
+                      className="inline-block"
+                      width={16}
+                      height={16}
+                    />
+                    &nbsp;
+                    {item.label}
                   </p>
                 </div>
-              </a>
+              </Link>
             ))}
           </div>
         </div>

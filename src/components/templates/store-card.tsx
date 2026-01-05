@@ -10,14 +10,10 @@ interface StoreCardProps {
   price: number;
   imageUrl: string;
   category: 'STORAGE' | 'GARAGE' | 'PARKING';
+  color: string;
+  lineText: string;
   available?: boolean;
 }
-
-const categoryColors = {
-  STORAGE: 'border-primary',
-  GARAGE: 'border-blue-900',
-  PARKING: 'border-yellow-600',
-};
 
 export function StoreCard({
   title,
@@ -26,6 +22,8 @@ export function StoreCard({
   price,
   imageUrl,
   category,
+  color,
+  lineText,
   available = true,
 }: StoreCardProps) {
   return (
@@ -37,9 +35,9 @@ export function StoreCard({
           fill
           className="object-cover group-hover:scale-105 transition duration-500"
         />
-        <div className="absolute top-0 left-0 bg-primary text-primary-foreground text-xs font-bold px-3 py-1 rounded-br-lg">
+        {/* <div className="absolute top-0 left-0 bg-primary text-primary-foreground text-xs font-bold px-3 py-1 rounded-br-lg">
           ROOT
-        </div>
+        </div> */}
       </div>
 
       <CardContent className="p-6">
@@ -60,14 +58,20 @@ export function StoreCard({
           {station}
         </p>
 
-        <div className="border-t pt-3 flex items-end justify-between">
-          <div className="font-bold">
-            月額 <span className="text-xl">{price.toLocaleString()}</span> 円
-          </div>
+        <div className="font-bold">
+          月額 <span className="text-xl">{price.toLocaleString()}</span> 円
+        </div>
+
+        <div className="border-t pt-3 mt-5 flex items-end justify-between">
           <span
-            className={`font-black text-xs uppercase tracking-widest border-b-2 ${categoryColors[category]}`}
+            className={`relative font-black text-md uppercase mb-5 tracking-widest`}
           >
             {category}
+            <span
+              className={`absolute -bottom-3 left-0 right-0 p-0.5 text-[8px] leading-none text-white bg-${color}`}
+            >
+              {lineText}
+            </span>
           </span>
         </div>
       </CardContent>
