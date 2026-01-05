@@ -7,8 +7,12 @@ const usagePurposes = ['荷物を保管する', '書類保管', '季節用品', 
 
 export function SearchSection() {
   return (
-    <div>
-      <SearchFeature prefectures={prefectures} usagePurposes={usagePurposes} />
+    <div className="-mt-24 bg-[#4DB6AC] pt-24">
+      <SearchFeature
+        prefectures={prefectures}
+        usagePurposes={usagePurposes}
+        isQuickSearchBarVisible={false}
+      />
     </div>
   );
 }

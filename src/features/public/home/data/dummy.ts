@@ -10,6 +10,8 @@ export const featuredStoresData = [
     imageUrl:
       'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=400&h=300&fit=crop',
     category: 'STORAGE' as const,
+    color: 'primary',
+    lineText: 'ストレージ',
     available: true,
   },
   {
@@ -21,6 +23,8 @@ export const featuredStoresData = [
     imageUrl:
       'https://images.unsplash.com/photo-1590674899484-d5640e854abe?w=400&h=300&fit=crop',
     category: 'GARAGE' as const,
+    color: 'secondary',
+    lineText: 'ガレージ',
     available: true,
   },
   {
@@ -32,6 +36,8 @@ export const featuredStoresData = [
     imageUrl:
       'https://images.unsplash.com/photo-1506521781263-d8422e82f27a?w=400&h=300&fit=crop',
     category: 'PARKING' as const,
+    color: 'muted',
+    lineText: 'パーキング',
     available: true,
   },
 ];

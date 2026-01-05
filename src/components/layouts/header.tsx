@@ -10,6 +10,7 @@ import { LogoImage } from '@/components/images';
 import { StoreSearchDropdown } from './StoreSearchDropdown';
 import { ServicesDropdown } from './ServicesDropdown';
 import { GuideDropdown } from './GuideDropdown';
+import { ROUTES } from '@/constants';
 
 // Icons
 import {
@@ -27,22 +28,22 @@ const LINK_URLS = [
     dropdownKey: 'store' as const,
     subMenu: [
       {
-        href: '/store-search',
+        href: ROUTES.STORE_SEARCH,
         label: '店舗を探す',
         icon: <BuildingIcon className="w-8 h-8" />,
       },
       {
-        href: '/current-location',
+        href: ROUTES.CURRENT_LOCATION,
         label: '現在地から探す',
         icon: <LocationIcon className="w-8 h-8" />,
       },
       {
-        href: '/area-search',
+        href: ROUTES.AREA_SEARCH,
         label: 'エリアから探す',
         icon: <GroupMapIcon className="w-8 h-8" />,
       },
       {
-        href: '/current-location',
+        href: ROUTES.STATION_SEARCH,
         label: '路線・駅から探す',
         icon: <TrainIcon className="w-8 h-8" />,
       },
@@ -54,20 +55,59 @@ const LINK_URLS = [
     hasDropdown: true,
     dropdownKey: 'services' as const,
     subMenu: [
-      { href: '/store-search', label: '店舗を探す', icon: '' },
-      { href: '/area-map', label: 'エリアマップから探す', icon: '' },
-      { href: '/station-search', label: '路線・駅から探す', icon: '' },
-      { href: '/current-location', label: '現在地から探す', icon: '' },
+      {
+        href: ROUTES.SERVICE_DETAIL('storage'),
+        label: 'STORAGE',
+        color: 'primary',
+        lineText: 'ストレージ',
+        sublabel: 'トランクルームのルートストレージ',
+      },
+      {
+        href: ROUTES.SERVICE_DETAIL('garage'),
+        label: 'GARAGE',
+        color: 'secondary',
+        lineText: 'ガレージ',
+        sublabel: '選べるタイプのルートスガレージ',
+      },
+      {
+        href: ROUTES.SERVICE_DETAIL('parking'),
+        label: 'PARKING',
+        color: 'muted',
+        lineText: 'パーキング',
+        sublabel: '屋内・外タイプのルートパーキング',
+      },
     ],
   },
-  { href: '/storage', label: 'ルートとは', hasDropdown: false },
-  { href: '/use-cases', label: '活用事例', hasDropdown: false },
+  { href: ROUTES.STORAGE, label: 'ルートとは', hasDropdown: false },
+  { href: ROUTES.USE_CASES, label: '活用事例', hasDropdown: false },
   { href: '/contract-flow', label: 'ご契約の流れ', hasDropdown: false },
   {
     href: '/guide',
     label: 'ご利用ガイド',
     hasDropdown: true,
     dropdownKey: 'guide' as const,
+    subMenu: [
+      {
+        href: '/guide/usage',
+        label: 'ご利用ガイドTOP',
+      },
+      {
+        href: '/guide/usage',
+        label: 'ご契約に必要なのもの',
+      },
+      {
+        href: '/guide/usage',
+        label: 'お支払いについて',
+      },
+      {
+        href: '/guide/usage',
+        label: '初期費用について',
+      },
+      {
+        href: '/guide/usage',
+        label: 'ご解約について',
+      },
+    ],
   },
   { href: '/news', label: 'お知らせ', hasDropdown: false },
 ];
@@ -213,15 +253,36 @@ export function Header() {
       <div className="relative">
         <StoreSearchDropdown
           isOpen={activeDropdown === 'store'}
-          subMenu={LINK_URLS[0].subMenu!}
+          subMenu={
+            LINK_URLS[0].subMenu! as {
+              href: string;
+              label: string;
+              icon: React.ReactNode;
+            }[]
+          }
           onClose={closeDropdown}
         />
         <ServicesDropdown
           isOpen={activeDropdown === 'services'}
+          subMenu={
+            LINK_URLS[1].subMenu! as {
+              href: string;
+              label: string;
+              color: string;
+              lineText: string;
+              sublabel: string;
+            }[]
+          }
           onClose={closeDropdown}
         />
         <GuideDropdown
           isOpen={activeDropdown === 'guide'}
+          subMenu={
+            LINK_URLS[5].subMenu! as {
+              href: string;
+              label: string;
+            }[]
+          }
           onClose={closeDropdown}
         />
       </div>

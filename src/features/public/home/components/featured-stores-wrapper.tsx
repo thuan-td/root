@@ -11,9 +11,7 @@ export async function FeaturedStoresWrapper() {
       <div className="container">
         <h2 className="text-center text-2xl md:text-3xl font-bold mb-12">
           キャンペーン中の
-          <span className="text-primary border-b-4 border-primary/20">
-            おすすめ
-          </span>
+          <span className="text-primary">おすすめ</span>
           店舗
         </h2>
 
