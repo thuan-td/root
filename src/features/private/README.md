@@ -8,10 +8,12 @@ Features available **only to authenticated users**.
 
 - Overview of user activity
 - Quick stats
-- Recent bookings
+- Contract management
 - Saved favorites
+- Payment status
+- News and notifications
 
-**Status:** 🔄 TODO
+**Status:** ✅ COMPLETED
 
 ### 2. **profile** - User Profile
 
@@ -84,30 +86,34 @@ These routes should be protected by:
 2. **Auth Guards** - Client-side protection
 3. **API Authorization** - Server-side verification
 
-## Implementation Template
+## Implementation Example (Dashboard - COMPLETED)
 
 ```tsx
 // features/private/dashboard/components/Dashboard.tsx
 'use client';
 
-import { useAuth } from '@/hooks/useAuth';
-import { redirect } from 'next/navigation';
-import { ROUTES } from '@/constants';
+import { useDashboardData } from '../hooks';
+import LoadingSpinner from '@/components/common/LoadingSpinner';
 
-export function Dashboard() {
-  const { isAuthenticated, isLoading, user } = useAuth();
+export default function Dashboard() {
+  const { data, isLoading, isError, error } = useDashboardData();
 
   if (isLoading) return <LoadingSpinner />;
-  if (!isAuthenticated) redirect(ROUTES.LOGIN);
+  if (isError) return <ErrorMessage error={error} />;
+
+  const { user, stats, news } = data;
 
   return (
     <div>
-      <h1>Welcome, {user?.name}</h1>
-      {/* Dashboard content */}
+      <h1>Welcome, {user.name}</h1>
+      <Stats data={stats} />
+      <News items={news} />
     </div>
   );
 }
 ```
+
+See `features/private/dashboard/` for complete implementation.
 
 ## Folder Structure
 

@@ -15,5 +15,8 @@
   },
   "editor.quickSuggestions": {
     "strings": true
+  },
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "vscode.typescript-language-features"
   }
 }

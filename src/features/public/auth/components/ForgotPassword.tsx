@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import Breadcrumb from '@/components/common/Breadcrumb';
 
 interface ForgotPasswordFormData {
@@ -14,6 +15,7 @@ interface ValidationErrors {
 }
 
 export default function ForgotPassword() {
+  const router = useRouter();
   const [formData, setFormData] = useState<ForgotPasswordFormData>({
     emailAddress: '',
     phoneNumber: '',
@@ -86,7 +88,10 @@ export default function ForgotPassword() {
       console.log('Sending verification code to:', formData.phoneNumber);
       setSuccessMessage('認証コードをSMSで送信しました');
       setTimeout(() => {
-        // Navigate to verification step
+        // Navigate to SMS verification page
+        router.push(
+          `/verify-sms-code?phone=${encodeURIComponent(formData.phoneNumber)}`,
+        );
       }, 2000);
     } catch (error) {
       setErrors({
