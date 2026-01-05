@@ -25,6 +25,7 @@
     --input: 214.3 31.8% 91.4%;
     --ring: 0 78% 44%;
     --radius: 0.5rem;
+    --background-admin: 44 33% 94%; /*  #F5F1E6; */
   }
 
   .dark {

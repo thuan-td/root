@@ -104,9 +104,9 @@ export default function Dashboard() {
   const { user, stats, news } = data;
 
   return (
-    <div className="bg-background-light dark:bg-background-dark text-gray-800 dark:text-gray-200 min-h-screen flex flex-col font-body">
+    <div className="text-gray-800 bg-[hsl(var(--background-admin))] dark:text-gray-200 min-h-screen flex flex-col font-body">
       {/* Header */}
-      <header className="w-full bg-[#F5F0E6] dark:bg-surface-dark py-6 border-b border-gray-200 dark:border-gray-700">
+      <header className="w-full dark:bg-surface-dark py-6 border-b border-gray-200 dark:border-gray-700">
         <h1 className="text-center text-2xl font-bold tracking-wide text-black dark:text-white">
           マイページトップ
         </h1>
@@ -118,7 +118,7 @@ export default function Dashboard() {
         <DashboardSidebar userName={user.name} />
 
         {/* Main Content */}
-        <main className="flex-1 p-6 md:p-10 space-y-8 bg-background-light dark:bg-background-dark">
+        <main className="flex-1 p-6 md:p-10 space-y-8 ">
           {/* Quick Access Cards */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             <QuickAccessCard

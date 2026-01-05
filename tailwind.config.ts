@@ -61,6 +61,10 @@ const config: Config = {
         'sidebar-light': '#F5F0E6',
         'sidebar-dark': '#181818',
         'primary-light': '#FFEBEE',
+        'background-admin': 'var(--background-admin)',
+        'button-secondary': '#C9C9C9',
+        'button-danger': '#C61718',
+        'button-active': '#41BBA2',
       },
       borderRadius: {
         lg: 'var(--radius)',
